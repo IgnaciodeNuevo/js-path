@@ -8,8 +8,28 @@ body {
   height: 100vh;
 }
 
-input,
-button {
+button,
+input {
   font-size: 1rem;
   padding: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+button {
+  background-color: #0047bb;
+  border-radius: 3px;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  height: 42px;
+  text-align: center;
+  transition: background-color 0.2s ease, border 0.2s ease;
+}
+
+button:hover {
+  background-color: #003488;
+}
+
+button:not(:last-of-type) {
+  margin-right: 0.5rem;
 }
