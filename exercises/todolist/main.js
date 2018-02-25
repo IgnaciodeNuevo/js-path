@@ -17,7 +17,7 @@ function startExercise() {
 function addItem() {
   const myItems = document.getElementById('myItems');
   let value = document.getElementById('target').value;
-  let hash = Math.round(Math.random() * 1000000000000000000000);
+  let hash = Math.round(Math.random() * 100000000000000000);
 
   (function trimText() {
     return (trimedText = value.replace(/ /g, '') + hash);

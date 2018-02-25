@@ -1,44 +1,21 @@
-body {
-  border: 0;
-  margin: 0;
-  padding: 1rem;
-}
-
-legend,
-label {
+legend {
+  color: #003488;
   display: block;
   font-size: 1.2rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
     'Open Sans', 'Helvetica Neue', sans-serif;
-  margin-top: 0.5rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  text-transform: uppercase;
 }
 
 button,
 input {
-  font-size: 1.2rem;
-  padding: 0.5rem;
   margin-right: 0.5rem;
 }
 
 fieldset {
   border: 0;
-}
-
-button {
-  background-color: #0047bb;
-  border-radius: 3px;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  height: 42px;
-  text-align: center;
-  transition: background-color 0.2s ease, border 0.2s ease;
-}
-
-button:hover {
-  background-color: #003488;
-}
-
-button:not(:last-of-type) {
-  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0;
 }
