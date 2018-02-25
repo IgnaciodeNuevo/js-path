@@ -5,30 +5,28 @@ function startExercise() {
   entryPoint.innerHTML += `
     <input id='target' type='text' placeholder='Add Item'>
     <button onclick='addItem()'>Add Item</button>
-    <button onclick='showStorage()'>Show Storage</button>
     <button onclick='clearStorage()'>Clear Storage</button>
-    <fieldset id="todo-list">
+    <fieldset>
       <legend>Todo List:</legend>
+      <div id="todo-list"></div>
     </fieldset>`;
 
   return entryPoint;
 }
 
+let myInputCount = 1;
+
 function addItem() {
   const todoList = document.getElementById('todo-list');
   const value = document.getElementById('target').value;
-  const hash = Math.round(Math.random() * 100000000000000000);
-
-  (function trimText() {
-    return (trimedText = value.replace(/ /g, '') + hash);
-  })();
 
   if (value !== '') {
+    const elementId = 'element-' + myInputCount++;
     todoList.innerHTML += `
-    <label for="${trimedText}">
-      <input type="checkbox" id="${trimedText}">
-      ${value}
-    </label>`;
+            <label for="${elementId}">
+            <input type="checkbox" id="${elementId}">
+            ${value}
+            </label>`;
   }
 
   (function clearInut() {
@@ -39,21 +37,3 @@ function addItem() {
 }
 
 startExercise();
-
-function clearStorage() {
-  localStorage.clear();
-  console.log('Cleared Storage');
-}
-
-function showStorage() {
-  entryPoint.outerHTML += "<div id='localStorage'></div>";
-  // if (typeof Storage !== 'undefined') {
-  //   // Store
-  //   localStorage.setItem('lastname', 'Smith');
-  //   // Retrieve
-  //   document.getElementById('localStorage').innerHTML = localStorage.getItem('lastname');
-  // } else {
-  //   document.getElementById('localStorage').innerHTML =
-  //     'Sorry, your browser does not support Web Storage...';
-  // }
-}
