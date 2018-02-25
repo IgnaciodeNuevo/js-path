@@ -1,0 +1,23 @@
+{
+  "name": "js-path",
+  "version": "1.0.0",
+  "description": "JavaScript Path: exercises, notes and tests.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node spec/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgnaciodeNuevo/js-path.git"
+  },
+  "author": "Ignacio Villanueva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IgnaciodeNuevo/js-path/issues"
+  },
+  "homepage": "https://github.com/IgnaciodeNuevo/js-path#readme",
+  "dependencies": {
+    "jasmine": "^3.0.0",
+    "jasmine-node": "^1.14.5"
+  }
+}
