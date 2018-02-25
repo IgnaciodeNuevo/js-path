@@ -7,7 +7,7 @@ function startExercise() {
     <button onclick='addItem()'>Add Item</button>
     <button onclick='showStorage()'>Show Storage</button>
     <button onclick='clearStorage()'>Clear Storage</button>
-    <fieldset id="myItems">
+    <fieldset id="todo-list">
       <legend>Todo List:</legend>
     </fieldset>`;
 
@@ -15,16 +15,16 @@ function startExercise() {
 }
 
 function addItem() {
-  const myItems = document.getElementById('myItems');
-  let value = document.getElementById('target').value;
-  let hash = Math.round(Math.random() * 100000000000000000);
+  const todoList = document.getElementById('todo-list');
+  const value = document.getElementById('target').value;
+  const hash = Math.round(Math.random() * 100000000000000000);
 
   (function trimText() {
     return (trimedText = value.replace(/ /g, '') + hash);
   })();
 
   if (value !== '') {
-    myItems.innerHTML += `
+    todoList.innerHTML += `
     <label for="${trimedText}">
       <input type="checkbox" id="${trimedText}">
       ${value}
@@ -37,6 +37,8 @@ function addItem() {
     }
   })();
 }
+
+startExercise();
 
 function clearStorage() {
   localStorage.clear();
@@ -55,5 +57,3 @@ function showStorage() {
   //     'Sorry, your browser does not support Web Storage...';
   // }
 }
-
-startExercise();
