@@ -1,7 +1,7 @@
 const entryPoint = document.getElementById('start');
+let myElementCount = 0;
 
 function startExercise() {
-  // Had problems iterating through getElementByClassName NodeList
   entryPoint.innerHTML += `
     <input id='target' type='text' placeholder='Add Item'>
     <button onclick='addItem()'>Add Item</button>
@@ -14,20 +14,23 @@ function startExercise() {
   return entryPoint;
 }
 
-let myInputCount = 1;
-
 function addItem() {
   const todoList = document.getElementById('todo-list');
   const value = document.getElementById('target').value;
 
   if (value !== '') {
-    const elementId = 'element-' + myInputCount++;
-    todoList.innerHTML += `
+    const elementId = 'element-' + myElementCount++;
+    var myDb = new Object();
+    myDb += `
             <label for="${elementId}">
             <input type="checkbox" id="${elementId}">
             ${value}
             </label>`;
   }
+
+  let jsonString = JSON.stringify(myDb);
+
+  console.log(jsonString);
 
   (function clearInut() {
     if (target.value != '') {
