@@ -1,7 +1,7 @@
 const entryPoint = document.getElementById('start');
 let myElementCount = 0;
 
-function startExercise() {
+(function startExercise() {
   entryPoint.innerHTML += `
     <input id='target' type='text' placeholder='Add Item'>
     <button onclick='addItem()'>Add Item</button>
@@ -12,31 +12,37 @@ function startExercise() {
     </fieldset>`;
 
   return entryPoint;
-}
+})();
 
 function addItem() {
   const todoList = document.getElementById('todo-list');
-  const value = document.getElementById('target').value;
+  const myValue = document.getElementById('target').value;
 
-  if (value !== '') {
-    const elementId = 'element-' + myElementCount++;
-    var myDb = new Object();
-    myDb += `
-            <label for="${elementId}">
-            <input type="checkbox" id="${elementId}">
-            ${value}
-            </label>`;
+  if (myValue !== '') {
+    const id = myElementCount++;
+    var myDb = [];
+
+    myDb.push({
+      checked: false,
+      value: myValue,
+    });
   }
 
-  let jsonString = JSON.stringify(myDb);
-
-  console.log(jsonString);
+  console.log(myDb);
 
   (function clearInut() {
     if (target.value != '') {
       target.value = '';
     }
   })();
-}
 
-startExercise();
+  // let jsonString = JSON.stringify(myDb);
+
+  // console.log(jsonString);
+
+  // myDb += `
+  //           <label>
+  //           <input type="checkbox">
+  //             ${value}
+  //           </label>`;
+}
