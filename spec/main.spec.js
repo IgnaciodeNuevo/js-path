@@ -1,27 +1,27 @@
-var fizzBuzz = require('./example');
+var fizzBuzz = require('../exercises/fizzbuzz/main');
 
 describe('fizzBuzz', function() {
   it('Should return fizzbuzz string if divisible by 3 and by 5', function() {
-    expect(fizzBuzz(15)).toBe(true);
+    expect(fizzBuzz(15)).toString('fizzbuzz');
   });
 
   it('Should return fizz string if divisible by 3', function() {
-    expect(fizz(9)).toBe(true);
+    expect(fizzBuzz(9)).toString('fizz');
   });
 
   it('Should return buzz if divisible by 5', function() {
-    expect(fizz(100000)).toBe(true);
+    expect(fizzBuzz(100000)).toString('buzz');
   });
 
   it('Should return Fail! string if is not divisible by 3 or by 5', function() {
-    expect(fizz(0)).toBe(true);
+    expect(fizzBuzz(0)).toString('Fail!');
   });
 
   it('Should return Fail! string if is not divisible by 3 or by 5', function() {
-    expect(fizz(-0)).toBe(true);
+    expect(fizzBuzz(-0)).toString('Fail!');
   });
 
   it('Should return Fail! string if is not divisible by 3 or by 5', function() {
-    expect(fizz(-3)).toBe(true);
+    expect(fizzBuzz(-3)).toString('Fail!');
   });
 });
