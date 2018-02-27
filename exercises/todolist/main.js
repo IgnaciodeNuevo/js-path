@@ -1,48 +1,36 @@
-const entryPoint = document.getElementById('start');
-let myElementCount = 0;
-let myDb = [];
+const todoList = document.getElementById('todo-list');
+const api = Api;
 
-(function startExercise() {
-  entryPoint.innerHTML += `
-    <input id='target' type='text' placeholder='Add Item'>
-    <button onclick='addItem()'>Add Item</button>
-    <button onclick='clearStorage()'>Clear Storage</button>
-    <fieldset>
-      <legend>Todo List:</legend>
-      <div id="todo-list"></div>
-    </fieldset>`;
+function drawTodos(todos) {}
 
-  return entryPoint;
-})();
+function clearInut() {}
 
 function addItem() {
-  const todoList = document.getElementById('todo-list');
-  const myValue = document.getElementById('target').value;
-
-  if (myValue !== '') {
-    const id = myElementCount++;
-
-    myDb.push({
-      checked: false,
-      value: myValue,
-    });
+  const value = document.getElementById('target').value;
+  if (value === '') {
+    return;
   }
 
-  console.log(myDb);
+  api.addTodo({ checked: false, value: value }).then(todos => {
+    drawTodos(todos);
+    clearInput();
+  });
+}
 
-  (function clearInut() {
-    if (target.value != '') {
-      target.value = '';
-    }
-  })();
+// check or uncheck
+function toogleTodo() {
+  //TODO: OBTENER id
+  var id = null;
+  api.getTodoById(id).then(todo => {
+    todo.checked = !todo.checked;
+    api.updateTodo(todo).then(() => {
+      draw();
+    });
+  });
+}
 
-  // let jsonString = JSON.stringify(myDb);
-
-  // console.log(jsonString);
-
-  // myDb += `
-  //           <label>
-  //           <input type="checkbox">
-  //             ${value}
-  //           </label>`;
+function clearStorage() {
+  api.clearTodos().then(() => {
+    drawTodos();
+  });
 }
