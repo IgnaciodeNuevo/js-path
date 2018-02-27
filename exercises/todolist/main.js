@@ -1,5 +1,6 @@
 const entryPoint = document.getElementById('start');
 let myElementCount = 0;
+let myDb = [];
 
 (function startExercise() {
   entryPoint.innerHTML += `
@@ -20,7 +21,6 @@ function addItem() {
 
   if (myValue !== '') {
     const id = myElementCount++;
-    var myDb = [];
 
     myDb.push({
       checked: false,
