@@ -11,7 +11,15 @@
 </head>
 
 <body>
-  <div id="start"></div>
+  <input id='target' type='text' placeholder='Add Item'>
+  <button onclick='addItem()'>Add Item</button>
+  <button onclick='clearStorage()'>Clear Storage</button>
+  <fieldset>
+    <legend>Todo List:</legend>
+    <div id="todo-list"></div>
+  </fieldset>
+  <script src="utils.js"></script>
+  <script src="api.js"></script>
   <script src="main.js"></script>
 </body>
 
