@@ -1,4 +1,8 @@
 function fizzBuzz(number) {
+  if (number === 0) {
+    return 'Fail!';
+  }
+
   if (number % 3 === 0 && number % 5 === 0) {
     return 'fizzbuzz';
   } else if (number % 3 === 0) {

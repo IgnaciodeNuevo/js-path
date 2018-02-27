@@ -1,4 +1,4 @@
-var isPair = require('../exercises/example/example');
+var isPair = require('./example');
 
 describe('isPair', function() {
   it('Should return true for a pair number', function() {
