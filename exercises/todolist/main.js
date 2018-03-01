@@ -1,9 +1,27 @@
 const todoList = document.getElementById('todo-list');
 const api = Api;
 
-function drawTodos(todos) {}
+function drawTodos(todos) {
+  getTodos().then(todos => {
+    todoList.innerHTML += `
+      <label>
+        <input type="checkbox" data-guid=${id}>
+        ${value}
+      </label>`;
+  });
+}
 
-function clearInut() {}
+function clearInut() {
+  document.getElementById('target').value = '';
+}
+
+function updateTodo() {
+  const todo = document.querySelector('input[type=checkbox]').checked;
+  api.addTodo({ checked: todo, value: value }).then(todos => {
+    drawTodos(todos);
+    clearInput();
+  });
+}
 
 function addItem() {
   const value = document.getElementById('target').value;
@@ -11,16 +29,19 @@ function addItem() {
     return;
   }
 
-  api.addTodo({ checked: false, value: value }).then(todos => {
-    drawTodos(todos);
-    clearInput();
-  });
+  api
+    .addTodo({
+      checked: false,
+      value: value,
+    })
+    .then(todos => {
+      drawTodos(todos);
+      clearInput();
+    });
 }
 
-// check or uncheck
 function toogleTodo() {
-  //TODO: OBTENER id
-  var id = null;
+  const id = document.querySelector('input[type=checkbox]').getAttribute('data-guid');
   api.getTodoById(id).then(todo => {
     todo.checked = !todo.checked;
     api.updateTodo(todo).then(() => {
