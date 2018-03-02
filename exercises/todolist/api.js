@@ -1,26 +1,48 @@
 //Module pattern or revealed module pattern
 
-var Api = (function() {
-  var todos = [];
+let Api = (function() {
+  let todos = [];
 
-  var add = function(todo) {
-    todo.id = guid();
-    todos.push(todo);
+  let add = function(item) {
+    item.id = guid();
+    todos.push(item);
     return Promise.resolve(todos);
   };
 
-  var get = function() {
+  let get = function() {
     return Promise.resolve(todos);
-  };
+    };
 
-  var clear = function() {
+  let getById = function (id) {
+    var item;
+    for (let i = 0; i < todos.length; i++) {
+      if (todos[i].id == id) {
+        item = todos[i];
+      }
+    }
+    return Promise.resolve(item);
+  }
+
+  let update = function (item) {
+    for (let i = 0; i < todos.length; i++) {
+      if (todos[i].id == item.id) {
+        todos[i] = item;
+      }
+    }
+    return Promise.resolve(todos);
+  }
+
+  let clear = function() {
     todos = [];
     return Promise.resolve();
-  };
+    };
+
 
   return {
     addTodo: add,
     getTodos: get,
     clearTodos: clear,
+    getTodoById: getById,
+    updateTodo: update
   };
 })();
