@@ -2,22 +2,25 @@ const todoList = document.getElementById('todo-list');
 const api = Api;
 
 function drawTodos(todos) {
-  getTodos().then(todos => {
-    todoList.innerHTML += `
-      <label>
-        <input type="checkbox" data-guid=${id}>
-        ${value}
-      </label>`;
+  api.getTodos().then(todos => {
+    todoList.innerHTML = '';
+    for (let i = 0; i < todos.length; i++) {
+      todoList.innerHTML += `
+        <label>
+          <input type="checkbox" data-guid=${todos[i].id}>
+          ${todos[i].value}
+        </label>`;
+    }
   });
 }
 
-function clearInut() {
+function clearInput() {
   document.getElementById('target').value = '';
 }
 
-function updateTodo() {
-  const todo = document.querySelector('input[type=checkbox]').checked;
-  api.addTodo({ checked: todo, value: value }).then(todos => {
+function updateTodo(item) {
+
+    api.updateTodo(item).then(todos => {
     drawTodos(todos);
     clearInput();
   });
@@ -29,12 +32,10 @@ function addItem() {
     return;
   }
 
-  api
-    .addTodo({
+  api.addTodo({
       checked: false,
       value: value,
-    })
-    .then(todos => {
+    }).then(todos => {
       drawTodos(todos);
       clearInput();
     });
@@ -42,9 +43,9 @@ function addItem() {
 
 function toogleTodo() {
   const id = document.querySelector('input[type=checkbox]').getAttribute('data-guid');
-  api.getTodoById(id).then(todo => {
-    todo.checked = !todo.checked;
-    api.updateTodo(todo).then(() => {
+    api.getTodoById(id).then(item => {
+      item.checked = !item.checked;
+      api.updateTodo(item).then(() => {
       draw();
     });
   });
@@ -54,4 +55,7 @@ function clearStorage() {
   api.clearTodos().then(() => {
     drawTodos();
   });
+
+  // Add event listener when clicking checkbox with this....
+  // Then call toogleTodo
 }
