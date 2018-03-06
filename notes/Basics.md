@@ -13,7 +13,18 @@ localStorage is a key: value pair
 
 ### Usage
 
+**setItem()**
+
 `localStorage.setItem('key', 'value');`
+
+**getItem()**
+
 `localStorage.getItem('key');`
+
+**removeItem()**
+
 `localStorage.removeItem('key');`
+
+**clear()**
+
 `localStorage.clear();`
