@@ -10,3 +10,4 @@ My JavaScript Path: everything I do while learning
 ## Notes
 
 1. [JavaScript Common Errors](/notes/Errors.md)
+1. [JavaScript Basics](/notes/Basics.md)
