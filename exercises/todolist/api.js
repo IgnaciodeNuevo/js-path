@@ -1,11 +1,16 @@
 //Module pattern or revealed module pattern
 
+// let Api = (function(storedTodos) {
+// let todos = storedTodos || [];
+
 let Api = (function() {
   let todos = [];
 
   let add = function(item) {
     item.id = guid();
     todos.push(item);
+
+    // Save items to localStorage
     return Promise.resolve(todos);
   };
 
@@ -29,11 +34,14 @@ let Api = (function() {
         todos[i] = item;
       }
     }
+
+    // Save items to localStorage
     return Promise.resolve(todos);
   }
 
   let clear = function() {
     todos = [];
+    // Save todos (empty) to localStorage
     return Promise.resolve();
     };
 
@@ -46,3 +54,4 @@ let Api = (function() {
     updateTodo: update
   };
 })();
+// })(storedTodos);
