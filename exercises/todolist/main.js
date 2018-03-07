@@ -1,6 +1,9 @@
 const todoList = document.getElementById('todo-list');
 const form = document.querySelector('form');
-const btn = document.getElementById('js-add-item');
+
+// Recuperar todos guardados
+// const storedTodos = local....
+// const api = Api(storedTodos);
 const api = Api;
 
 function drawTodos(todos) {
@@ -48,13 +51,8 @@ function clearStorage() {
 }
 
 form.addEventListener('submit', function(e) {
+  console.log('Yep?')
   e.preventDefault();
-
-  console.log('Prevented!');
-});
-
-
-btn.addEventListener('click', function() {
   const value = document.getElementById('target').value;
   if (value === '') {
     return;
@@ -65,3 +63,16 @@ btn.addEventListener('click', function() {
       clearInput();
     });
 });
+
+// TODO: Wrapp API into MiddleWare to have access through localStorageMiddleware
+// localStorageMiddleware() {
+//   addTodos() {
+//     api.addTodo.then(() => {
+//       localStoaage.set(todos, todos)
+//     });
+//     Promise.resolve()
+//   }
+//   clearTodos() {
+
+//   }
+// }
