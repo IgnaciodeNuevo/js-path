@@ -3,8 +3,15 @@
 // let Api = (function(storedTodos) {
 // let todos = storedTodos || [];
 
+
+
+
 let Api = (function() {
   let todos = [];
+
+
+
+
 
   let add = function(item) {
     item.id = guid();

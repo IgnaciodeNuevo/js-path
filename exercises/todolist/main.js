@@ -2,7 +2,7 @@ const todoList = document.getElementById('todo-list');
 const form = document.querySelector('form');
 
 // Recuperar todos guardados
-// const storedTodos = local....
+const storedTodos = localStorage.getItem('dataBase'); // New
 // const api = Api(storedTodos);
 const api = Api;
 
@@ -56,21 +56,10 @@ form.addEventListener('submit', function(e) {
     return;
   }
 
+  // localStorage.setItem('dataBase', JSON.stringify(todos)); // New
+
   api.addTodo({ checked: false, value: value }).then(todos => {
     drawTodos(todos);
     clearInput();
   });
 });
-
-// TODO: Wrapp API into MiddleWare to have access through localStorageMiddleware
-// localStorageMiddleware() {
-//   addTodos() {
-//     api.addTodo.then(() => {
-//       localStoaage.set(todos, todos)
-//     });
-//     Promise.resolve()
-//   }
-//   clearTodos() {
-
-//   }
-// }
