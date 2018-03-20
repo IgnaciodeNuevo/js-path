@@ -24,8 +24,7 @@ function clearInput() {
 }
 
 function updateTodo(item) {
-
-    api.updateTodo(item).then(todos => {
+  api.updateTodo(item).then(todos => {
     drawTodos(todos);
     clearInput();
   });
@@ -33,9 +32,9 @@ function updateTodo(item) {
 
 function toogleTodo() {
   const id = document.querySelector('input[type=checkbox]').getAttribute('data-guid');
-    api.getTodoById(id).then(item => {
-      item.checked = !item.checked;
-      api.updateTodo(item).then(() => {
+  api.getTodoById(id).then(item => {
+    item.checked = !item.checked;
+    api.updateTodo(item).then(() => {
       draw();
     });
   });
@@ -51,7 +50,6 @@ function clearStorage() {
 }
 
 form.addEventListener('submit', function(e) {
-  console.log('Yep?')
   e.preventDefault();
   const value = document.getElementById('target').value;
   if (value === '') {
@@ -59,9 +57,9 @@ form.addEventListener('submit', function(e) {
   }
 
   api.addTodo({ checked: false, value: value }).then(todos => {
-      drawTodos(todos);
-      clearInput();
-    });
+    drawTodos(todos);
+    clearInput();
+  });
 });
 
 // TODO: Wrapp API into MiddleWare to have access through localStorageMiddleware
