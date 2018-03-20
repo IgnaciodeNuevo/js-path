@@ -46,7 +46,15 @@ function clearStorage() {
   });
 
   // Add event listener when clicking checkbox with this....
-  // Then call toogleTodo
+  document.querySelector('input[type=checkbox]').addEventListener('change', changeHandler); // News
+  function changeHandler() { // News
+    if (this.checked) { // News
+      console.log(this); // News
+    } // News
+  } // News
+
+  // Then call toogleTodo // News
+  // toogleTodo(); // News
 }
 
 form.addEventListener('submit', function(e) {
