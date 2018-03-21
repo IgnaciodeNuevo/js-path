@@ -1,7 +1,5 @@
 const todoList = document.getElementById('todo-list');
 const form = document.querySelector('form');
-
-// Recuperar todos guardados
 const storedTodos = JSON.parse(localStorage.getItem('todoListDataBase'));
 // const api = Api(storedTodos);
 const api = Api;
@@ -9,6 +7,8 @@ const api = Api;
 drawTodos(storedTodos);
 
 function drawTodos(todos) {
+  // New: Si saco la función de dentro del if para no duplicar código y la meto
+  // justo debajo de drawTodos(todos) me da null
   if (!todos) {
     api.getTodos().then(todos => {
       todoList.innerHTML = '';
@@ -19,7 +19,9 @@ function drawTodos(todos) {
           ${todos[i].value}
           </label>`;
         // SELECCIONAR JUSTO EL CHECKBOX QUE TENGA GUID TODOS[I].ID (WITH)
-        document.querySelector('input[type=checkbox]').addEventListener('change', function() {
+        // SyntaxError: '[data-guid]=acf493cf-6867-7c2d-8605-748c13fc9df8' is not a valid selector
+        // <input data-guid="acf493cf-6867-7c2d-8605-748c13fc9df8" type="checkbox">hola</label>
+        document.querySelector(`[data-guid]=${todos[i].id}`).addEventListener('change', function() {
           toggleTodo(todos[i].id);
         });
       }
@@ -33,7 +35,9 @@ function drawTodos(todos) {
           ${todos[i].value}
         </label>`;
       // SELECCIONAR JUSTO EL CHECKBOX QUE TENGA GUID TODOS[I].ID (WITH)
-      document.querySelector('input[type=checkbox]').addEventListener('change', function() {
+      // SyntaxError: '[data-guid]=acf493cf-6867-7c2d-8605-748c13fc9df8' is not a valid selector
+      // <input data-guid="acf493cf-6867-7c2d-8605-748c13fc9df8" type="checkbox">hola</label>
+      document.querySelector(`[data-guid]=${todos[i].id}`).addEventListener('change', function() {
         toggleTodo(todos[i].id);
       });
     }
@@ -56,7 +60,7 @@ function toogleTodo(id) {
   api.getTodoById(id).then(item => {
     item.checked = !item.checked;
     api.updateTodo(item).then(() => {
-      draw();
+      drawTodos();
     });
   });
 }
