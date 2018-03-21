@@ -21,7 +21,7 @@ function drawTodos(todos) {
         // SELECCIONAR JUSTO EL CHECKBOX QUE TENGA GUID TODOS[I].ID (WITH)
         // SyntaxError: '[data-guid]=acf493cf-6867-7c2d-8605-748c13fc9df8' is not a valid selector
         // <input data-guid="acf493cf-6867-7c2d-8605-748c13fc9df8" type="checkbox">hola</label>
-        document.querySelector(`[data-guid]=${todos[i].id}`).addEventListener('change', function() {
+        document.querySelector(`[data-guid="${todos[i].id}"]`).addEventListener('change', function() {
           toggleTodo(todos[i].id);
         });
       }
@@ -37,7 +37,7 @@ function drawTodos(todos) {
       // SELECCIONAR JUSTO EL CHECKBOX QUE TENGA GUID TODOS[I].ID (WITH)
       // SyntaxError: '[data-guid]=acf493cf-6867-7c2d-8605-748c13fc9df8' is not a valid selector
       // <input data-guid="acf493cf-6867-7c2d-8605-748c13fc9df8" type="checkbox">hola</label>
-      document.querySelector(`[data-guid]=${todos[i].id}`).addEventListener('change', function() {
+      document.querySelector(`[data-guid="${todos[i].id}"]`).addEventListener('change', function() {
         toggleTodo(todos[i].id);
       });
     }
