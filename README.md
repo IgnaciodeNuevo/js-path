@@ -10,6 +10,7 @@ My JavaScript Path: everything I do while learning
 ## Katas
 
 1. [Mastermind](https://github.com/IgnaciodeNuevo/kata-mastermind)
+1. [Tamagotchi](https://github.com/IgnaciodeNuevo/kata-tamagochi)
 
 ## Notes
 
