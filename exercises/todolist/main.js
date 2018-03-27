@@ -18,9 +18,11 @@ function drawTodos(todos) {
           <input type="checkbox" data-guid=${todos[i].id}>
           ${todos[i].value}
           </label>`;
-        document.querySelector(`[data-guid="${todos[i].id}"]`).addEventListener('change', function() {
-          toggleTodo(todos[i].id);
-        });
+        document
+          .querySelector(`[data-guid="${todos[i].id}"]`)
+          .addEventListener('change', function() {
+            toggleTodo(todos[i].id);
+          });
       }
     });
   } else {
@@ -31,9 +33,11 @@ function drawTodos(todos) {
           <input type="checkbox" data-guid=${todos[i].id}>
           ${todos[i].value}
         </label>`;
-      document.querySelector(`[data-guid="${todos[i].id}"]`).addEventListener('change', function() {
-        toggleTodo(todos[i].id);
-      });
+      document
+        .querySelector(`[data-guid="${todos[i].id}"]`)
+        .addEventListener('change', function() {
+          toggleTodo(todos[i].id);
+        });
     }
   }
 }
