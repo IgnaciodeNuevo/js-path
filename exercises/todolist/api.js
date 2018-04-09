@@ -1,18 +1,6 @@
 //Module pattern or revealed module pattern
-
-// let Api = (function(storedTodos) {
-// let todos = storedTodos || [];
-
-
-
-
 let Api = (function() {
   let todos = [];
-
-
-
-
-
   let add = function(item) {
     item.id = guid();
     todos.push(item);
@@ -52,7 +40,6 @@ let Api = (function() {
     return Promise.resolve();
     };
 
-
   return {
     addTodo: add,
     getTodos: get,
@@ -61,4 +48,3 @@ let Api = (function() {
     updateTodo: update
   };
 })();
-// })(storedTodos);
