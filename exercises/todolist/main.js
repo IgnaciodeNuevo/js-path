@@ -1,31 +1,21 @@
 const todoList = document.getElementById('todo-list');
 const form = document.querySelector('form');
 const storedTodos = JSON.parse(localStorage.getItem('todoListDataBase'));
-// const api = Api(storedTodos);
 const api = Api;
 
 drawTodos(storedTodos);
 
 function drawTodos(todos) {
-  // New: Si saco la función de dentro del if para no duplicar código y la meto
-  // justo debajo de drawTodos(todos) me da null
   if (!todos) {
     api.getTodos().then(todos => {
-      todoList.innerHTML = '';
-      for (let i = 0; i < todos.length; i++) {
-        todoList.innerHTML += `
-        <label>
-          <input type="checkbox" data-guid=${todos[i].id}>
-          ${todos[i].value}
-          </label>`;
-        document
-          .querySelector(`[data-guid="${todos[i].id}"]`)
-          .addEventListener('change', function() {
-            toggleTodo(todos[i].id);
-          });
-      }
+        iterateTodos(todos);
     });
   } else {
+        iterateTodos(todos);
+    }
+}
+
+function iterateTodos(todos) {
     todoList.innerHTML = '';
     for (let i = 0; i < todos.length; i++) {
       todoList.innerHTML += `
@@ -39,7 +29,6 @@ function drawTodos(todos) {
           toggleTodo(todos[i].id);
         });
     }
-  }
 }
 
 function clearInput() {
