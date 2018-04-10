@@ -1,4 +1,6 @@
-** Ejercicio 1
+# Ejercicios
+
+## Ejercicio 1
 ```
 <ul>
     <li class="one">A</li>
@@ -19,7 +21,7 @@
 
 
 
-** Ejercicio 2
+## Ejercicio 2
 cambiar la declaracion de funciones en vez de:
     function drawTodos(todos) {
     usar:
@@ -27,19 +29,19 @@ cambiar la declaracion de funciones en vez de:
 
 
 
-** Ejercicio 3
+## Ejercicio 3
 Agregar un boton de añadir
 
 
 
-** Ejercicio 4
+## Ejercicio 4
 En la funcion draw hay dos fors
     - sustituir el primero por map
     - sustituir el segundo por forEach
 
 
 
-** Ejercicio 5
+## Ejercicio 5
 main.js tiene que tener el minimo de codigo posible
 Tiene que:
     inicializar el api
@@ -49,7 +51,7 @@ Tiene que:
 
 
 
-** Ejercicio Opcional
+## Ejercicio Opcional
 hacer que inmemory grabe en el localstorage
     - sin tener ninguna al referencia al local storage
     - main.js tampoco tenga una referencia al localstorage
