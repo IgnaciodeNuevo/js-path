@@ -1,5 +1,7 @@
 const todoList = document.getElementById('todo-list');
+const clearButton = document.querySelector('.js-clear-storage');
 const form = document.querySelector('form');
+
 const storedTodos = JSON.parse(localStorage.getItem('todoListDataBase'));
 const api = Api;
 
@@ -12,6 +14,10 @@ function drawTodos(todos) {
         });
     } else {
         iterateTodos(todos);
+        // storedTodos.forEach(storedTodo => api.addTodo(storedTodo));
+        // api.getTodos().then(todos => {
+        //     iterateTodos(todos);
+        // });
     }
 }
 
@@ -43,7 +49,7 @@ function updateTodo(item) {
     });
 }
 
-function toogleTodo(id) {
+function toggleTodo(id) {
     api.getTodoById(id).then(item => {
         item.checked = !item.checked;
         api.updateTodo(item).then(() => {
@@ -57,6 +63,10 @@ function clearStorage() {
         drawTodos();
     });
 }
+
+clearButton.addEventListener('click', function() {
+    localStorage.clear();
+});
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();

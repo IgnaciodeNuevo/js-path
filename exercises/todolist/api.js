@@ -1,7 +1,7 @@
 //Module pattern or revealed module pattern
-let Api = (function() {
+const Api = (function() {
     let todos = [];
-    let add = function(item) {
+    const add = function(item) {
         item.id = guid();
         todos.push(item);
 
@@ -9,12 +9,12 @@ let Api = (function() {
         return Promise.resolve(todos);
     };
 
-    let get = function() {
+    const get = function() {
         return Promise.resolve(todos);
     };
 
-    let getById = function(id) {
-        var item;
+    const getById = function(id) {
+        let item;
         for (let i = 0; i < todos.length; i++) {
             if (todos[i].id == id) {
                 item = todos[i];
@@ -23,7 +23,7 @@ let Api = (function() {
         return Promise.resolve(item);
     };
 
-    let update = function(item) {
+    const update = function(item) {
         for (let i = 0; i < todos.length; i++) {
             if (todos[i].id == item.id) {
                 todos[i] = item;
@@ -34,8 +34,9 @@ let Api = (function() {
         return Promise.resolve(todos);
     };
 
-    let clear = function() {
+    const clear = function() {
         todos = [];
+
         // Save todos (empty) to localStorage
         return Promise.resolve();
     };
