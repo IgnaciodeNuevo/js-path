@@ -14,6 +14,7 @@ function drawTodos(todos) {
         });
     } else {
         iterateTodos(todos);
+        // By Adrián:
         // storedTodos.forEach(storedTodo => api.addTodo(storedTodo));
         // api.getTodos().then(todos => {
         //     iterateTodos(todos);
@@ -52,6 +53,7 @@ function updateTodo(item) {
 function toggleTodo(id) {
     api.getTodoById(id).then(item => {
         item.checked = !item.checked;
+        console.log(item);
         api.updateTodo(item).then(() => {
             drawTodos();
         });
@@ -66,6 +68,7 @@ function clearStorage() {
 
 clearButton.addEventListener('click', function() {
     localStorage.clear();
+    location.reload();
 });
 
 form.addEventListener('submit', function(e) {
