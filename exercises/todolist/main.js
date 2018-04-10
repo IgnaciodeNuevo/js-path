@@ -2,37 +2,33 @@ const todoList = document.getElementById('todo-list');
 const clearButton = document.querySelector('.js-clear-storage');
 const form = document.querySelector('form');
 
-const storedTodos = JSON.parse(localStorage.getItem('todoListDataBase'));
 const api = Api;
 
-drawTodos(storedTodos);
+init();
 
-function drawTodos(todos) {
-    if (!todos) {
-        api.getTodos().then(todos => {
-            iterateTodos(todos);
-        });
-    } else {
-        //iterateTodos(todos);
-        // By Adrián:
-        storedTodos.forEach(storedTodo => api.addTodo(storedTodo));
-        api.getTodos().then(todos => {
-            iterateTodos(todos);
-        });
-    }
+function init() {
+    api.getTodos().then(function(todos) {
+        drawTodos(todos);
+    });
 }
 
-function iterateTodos(todos) {
-    todoList.innerHTML = '';
+function drawTodos(todos) {
+    let content = '';
     for (let i = 0; i < todos.length; i++) {
-        todoList.innerHTML += `
+        content += `
         <label>
-            <input type="checkbox" data-guid=${todos[i].id}>
+            <input type="checkbox" ${todos[i].checked ? 'checked' : ''} data-guid=${todos[i].id}>
             ${todos[i].value}
         </label>`;
+    }
+
+    todoList.innerHTML = content;
+
+    for (let i = 0; i < todos.length; i++) {
         document
             .querySelector(`[data-guid="${todos[i].id}"]`)
-            .addEventListener('change', function() {
+            .addEventListener('change', function () {
+                console.log('oatata');
                 toggleTodo(todos[i].id);
             });
     }
@@ -44,7 +40,6 @@ function clearInput() {
 
 function updateTodo(item) {
     api.updateTodo(item).then(todos => {
-        localStorage.setItem('todoListDataBase', JSON.stringify(todos));
         drawTodos(todos);
         clearInput();
     });
@@ -53,21 +48,15 @@ function updateTodo(item) {
 function toggleTodo(id) {
     api.getTodoById(id).then(item => {
         item.checked = !item.checked;
-        api.updateTodo(item).then(() => {
-            drawTodos();
+        api.updateTodo(item).then(todos => {
+            drawTodos(todos);
         });
     });
 }
 
-function clearStorage() {
-    api.clearTodos().then(() => {
-        drawTodos();
-    });
-}
-
 clearButton.addEventListener('click', function() {
-    localStorage.clear();
-    location.reload();
+    api.clearTodos();
+    init();
 });
 
 form.addEventListener('submit', function(e) {
@@ -78,7 +67,6 @@ form.addEventListener('submit', function(e) {
     }
 
     api.addTodo({ checked: false, value: value }).then(todos => {
-        localStorage.setItem('todoListDataBase', JSON.stringify(todos));
         drawTodos(todos);
         clearInput();
     });
