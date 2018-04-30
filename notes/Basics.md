@@ -45,3 +45,10 @@ console.log(obj.count);
 console.log(obj.result);
 // expected output: true
 ```
+
+
+## How to organize your JavaScript Classes
+
+- Business logic: where you calculate based on the data you have
+- Persistence: where you store the data you have
+- UI: where you get or paint data in the interface
