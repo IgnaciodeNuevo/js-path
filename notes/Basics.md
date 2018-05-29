@@ -52,3 +52,12 @@ console.log(obj.result);
 - Business logic: where you calculate based on the data you have
 - Persistence: where you store the data you have
 - UI: where you get or paint data in the interface
+
+## Falsy values
+
+- false
+- null
+- undefined
+- NaN
+- number 0
+- empty string ""
