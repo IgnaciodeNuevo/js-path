@@ -53,6 +53,7 @@ console.log(obj.result);
 - Persistence: where you store the data you have
 - UI: where you get or paint data in the interface
 
+
 ## Falsy values
 
 - false
@@ -61,3 +62,9 @@ console.log(obj.result);
 - NaN
 - number 0
 - empty string ""
+
+
+## null vs undefined
+
+- null: value of nothing
+- undefined: absence of value
