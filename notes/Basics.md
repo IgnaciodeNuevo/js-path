@@ -68,3 +68,7 @@ console.log(obj.result);
 
 - null: value of nothing
 - undefined: absence of value
+
+## Async Cheatsheet
+
+- [Async Cheatsheet](https://raw.githubusercontent.com/frontarm/async-javascript-cheatsheet/master/async-cheatsheet.png)
