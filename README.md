@@ -13,6 +13,10 @@ My JavaScript Path: everything I do while learning
 1. [Tamagotchi](https://github.com/IgnaciodeNuevo/kata-tamagochi)
 1. 08/10/2018 - [Clock-in](https://github.com/IgnaciodeNuevo/kata-clock-in)
 
+## Workshops
+
+1 30/03/2019 - [AdaJS Barcelona TDD Workshop](https://github.com/IgnaciodeNuevo/AdaJS-TDD-Workshop)
+
 ## Notes
 
 1. [JavaScript Common Errors](/notes/Errors.md)
